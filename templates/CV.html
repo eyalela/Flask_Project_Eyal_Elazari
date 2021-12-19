@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eyal Elazari CV</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='CV.css')}}">
+        <script async src="{{url_for('static', filename='CV.js')}}"></script>
+</head>
+
+<body onload="ChangeHeaderOnLoad()">
+
+  {% include 'Header.html' %}
+    
+    <h1 id="Title"> </h1>
+        <button class="name1" onclick="name_to_console() ">Name to console</button>
+
+    <div class="grid-container">
+        <div class="header">About Me<Br><Br>Eyal Elazari <Br><Br>City:Ofakim <Br><Br>Email: eyal92@gmail.com <Br><Br>
+            Phone:0507977077 </div>
+        <div class="side">Education<Br><Br>
+           Bsc Industrial Engineering <br></br></div>
+        <div class="main">Experience<br><Br>
+           System Engineer at Siemens </div>
+        <div class="footer">Skills<br><Br>
+           Software Skills</div>
+        <div class="Contact">
+            <p class="line_typewriter"> Contact </p>
+        <div class="contact-form">
+            <form id="contact-form" method="post" action="">
+                <input name="name" type="text" class="form-style" placeholder="Your Name" required><br>
+                <input name="Email" type="email" class="form-style" placeholder="Your Email" required><br>
+                <textarea name="Message" class="form-style" placeholder="Your Message" rows="4" required></textarea><br>
+                <input type="submit" class="form-style submit" value="SEND">
+                </form>
+        </div>
+        </div>
+      </div>
+    <div class="element"></div>
+    <div>
+        <button class= "Buttono" id="Buttono" onclick= "seeyou()"> Click Here</button> 
+    </div>
+</body>
+</html>

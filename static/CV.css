@@ -1,0 +1,191 @@
+@keyframes mobile {
+    from {background-color:#54c9b9 ;}
+    to {background-color: #d85012;}
+    }
+
+* {
+    box-sizing: border-box;
+  }
+h1 {
+    text-align: center;
+    color: rgb(221, 211, 211);
+    }
+body{
+    width: 100%;
+    height: 100%;
+    background-color: #6b9fe2;
+}
+
+.name1{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    border: 3px solid rgb(216, 233, 238);
+    padding: 10px;
+}
+.grid-container{ 
+  display:grid; 
+  justify-content:space-evenly ;
+
+grid-gap:10px;
+ padding:10px;
+ grid-template-areas:
+ 'header header header header' 
+ 'footer footer footer footer'
+ 'side side main main'
+ 'side side main main'
+ 'contact contact contact contact';
+}
+.header{
+    grid-area:header;
+    background-color: rgb(204, 252, 252);
+    height: 210px; 
+    text-align: left;
+        border: solid 2px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.side{
+    grid-area:side;background-color: rgb(15, 219, 209) ;
+    text-align: center;
+    border: solid 2px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.main{
+    grid-area:main;background-color: rgb(15, 219, 209);
+    text-align: center;
+    border: solid 2px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.footer{
+    grid-area:footer;background-color: rgb(157, 236, 217);
+    text-align: center;
+    border: solid 2px;
+    font-style: normal;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.Contact {
+    grid-area: contact;
+    background-color: rgb(2, 37, 32);
+    padding: 10px;
+    text-align: center;
+    background-size: cover;
+    background-position:center;
+    border: solid 2px;
+  }
+form{
+    margin-top: 50px;
+    transition: all 4s ease-in-out;
+  }
+.form-style{
+    width: 500px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid lightseagreen;
+    color:rgb(36, 87, 84) ;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+input{
+    height: 30px;
+  }
+form .submit {
+    margin-bottom: 20px;
+    background-color: rgba(143, 111, 111, 0.479);
+    font-size: 20px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    height: 50px;
+    border: solid ;
+  }
+form .submit:hover{
+    background-color:rgb(32, 178, 44);
+    cursor: pointer;
+    color:rgb(230, 222, 222);
+  }
+
+::placeholder { 
+    color:rgb(236, 228, 228);
+
+  }
+.line_typewriter {
+    position: relative;
+    top: 8%;
+    width: 16em;
+    margin: 0 auto;
+    border-right: 2px solid rgb(51, 44, 151);
+    font-size: 200%;
+    text-align: center;
+    white-space: normal;
+    overflow: hidden;
+    transform: translateY(-50%);
+    color:rgb(243, 241, 241);
+    animation: typewriter steps(40) 4s  normal both,
+    blinkTextCursor 500ms steps(10)  infinite normal;
+    animation-direction: alternate;
+  }
+
+  @keyframes typewriter {
+    from {
+          width: 0;
+    }
+    to {
+          width: 6em;
+    }}
+  
+  @keyframes blinkTextCursor {
+    from {
+          border-right-color: rgba(240, 236, 236, 0.75);
+    }
+    to {
+          border-right-color: transparent;
+    }
+  }
+  @keyframes blink {
+    0% {background-color:rgb(243, 239, 215); border-radius: 0%;}
+    25% {background-color:rgb(116, 65, 65); border-radius: 50%;}
+    50% {background-color: rgb(97, 87, 185);border-radius: 75%;}
+    75% {background-color: rgb(65, 85, 48);border-radius: 100%;}
+   100% {background-color: rgb(133, 134, 56);border-radius: 50%;}
+}
+.Buttono{
+    height: 100%;
+    font-size: 20px;
+    background-color: rgb(47, 143, 52);
+    animation-name: blink ;
+    animation-duration: 5s;
+    animation-iteration-count: 100;
+}
+
+@media (max-width: 700px) {
+    .grid-container  {
+      grid-template-areas: 
+      'header header header header' 
+      'footer footer footer footer'
+      'side side main main'
+      'side side main main'
+      'contact contact contact contact';
+    }
+  }
+
+@media only screen and (max-width: 700px)
+  {
+     body {
+        
+         font-size: 10px;
+        
+        background-color:rgb(243, 239, 215) ;
+        place-items: fixed ;
+       }
+       
+  
+  }
+

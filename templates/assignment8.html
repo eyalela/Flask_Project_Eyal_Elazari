@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Free Time {% endblock %}
+{% block content %}
+{% include 'Header.html' %}
+  {{ super()}}
+    <h2>Hobbies: {{hobby | default('For Example Ping Pong...', true)}} </h2>
+    {% if hobby %}
+        <h3>Real Madrid Forever</h3>
+    {% else %}
+        <h3>I am not a football fan</h3>
+    {% endif %}
+    <h2>Favorite Music: {{music | default('Classic Rock for Example...', true)}} </h2>
+    <h2> Languages </h2>
+    <ol>
+        {% for language in languages %}
+            <li>{{language}}</li>
+        {% endfor %}
+    </ol>
+{% endblock %}
