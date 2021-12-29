@@ -1,0 +1,45 @@
+{% extends 'assignment8.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+    {% include 'Header.html' %}
+
+    {% if session.get('logged_in') %}
+        <h1>Welcome back, {{session.username}}</h1>
+        <h2>Search users:</h2>
+        <form action="/assignment9" method="GET">
+           <input type="search"  name="name">
+           <input type="submit" value="Search">
+        </form>
+
+        {% if userFound %}
+            {% if username == '' %}
+                <h1>You can the Users here:</h1>
+                {% for user in users %}
+                        <h3> Name: {{user.name}}, Email: {{user.email}}</h3>
+                {% endfor %}
+            {% else %}
+                     <h1>User Details:</h1>
+                 {% for user in users %}
+                      {% if user.name == username or user.email == username %}
+                            <h3>Name: {{user.name}}</h3>
+                            <h3>Email: {{user.email}}</h3>
+                      {% endif %}
+                 {% endfor %}
+            {% endif %}
+        {% endif %}
+
+    {% else %}
+
+                <form method="POST" action="/assignment9">
+                    <h2>Welcome! Please Login</h2>
+                    <br><label for="username">Username:</label>
+                    <input id='username' name="username" required><br><br>
+                    <label for="password">password:</label>
+                    <input name="password" type="password" required><p></p>
+                    <input type="submit" value="Login">
+                </form>
+
+    {% endif %}
+{% endblock %}

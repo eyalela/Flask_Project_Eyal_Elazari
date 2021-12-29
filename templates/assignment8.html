@@ -3,6 +3,13 @@
 {% block title %} Free Time {% endblock %}
 {% block content %}
 {% include 'Header.html' %}
+
+  {% if session.logged_in %}
+     <h1> Welcome, {{session.username}} </h1>
+  {% else %}
+     <h1> Welcome! </h1>
+  {% endif %}
+
   {{ super()}}
     <h2>Hobbies: {{hobby | default('For Example Ping Pong...', true)}} </h2>
     {% if hobby %}

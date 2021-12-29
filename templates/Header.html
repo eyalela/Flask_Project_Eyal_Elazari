@@ -6,7 +6,15 @@
 </head>
 <body>
     <header>
-        <a href = "/">Home</a> | <a href = "/assignment8">Free Time</a>
+        <a href = "/">Home</a> | <a href = "/assignment8">Free Time </a>
+        {% if session.logged_in %}
+            | <a href="/assignment9"> Users </a>
+        {% else %}
+            | <a href="/assignment9"> Login </a>
+        {% endif %}
+        {% if session.username %}
+            | <a href='/logout'>Logout</a>
+        {% endif %}
     </header>
 </body>
 </html>

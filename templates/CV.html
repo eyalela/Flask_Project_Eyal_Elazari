@@ -11,9 +11,14 @@
 <body onload="ChangeHeaderOnLoad()">
 
   {% include 'Header.html' %}
-    
-    <h1 id="Title"> </h1>
-        <button class="name1" onclick="name_to_console() ">Name to console</button>
+
+  {% if session.logged_in %}
+     <h1> Welcome, {{session.username}} </h1>
+  {% else %}
+     <h1> Welcome! </h1>
+  {% endif %}
+
+
 
     <div class="grid-container">
         <div class="header">About Me<Br><Br>Eyal Elazari <Br><Br>City:Ofakim <Br><Br>Email: eyal92@gmail.com <Br><Br>
