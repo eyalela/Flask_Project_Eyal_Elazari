@@ -9,11 +9,13 @@
         <a href = "/">Home</a> | <a href = "/assignment8">Free Time </a>
         {% if session.logged_in %}
             | <a href="/assignment9"> Users </a>
+            | <a href="/assignment10"> Users Management </a>
         {% else %}
             | <a href="/assignment9"> Login </a>
         {% endif %}
         {% if session.username %}
             | <a href='/logout'>Logout</a>
+
         {% endif %}
     </header>
 </body>

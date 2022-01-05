@@ -1,0 +1,59 @@
+{% extends 'assignment8.html' %}
+
+{% block title %}Users Management{% endblock %}
+
+{% include 'Header.html' %}
+
+{% block content %}
+  {% if session.logged_in %}
+     <h1> Welcome, {{session.username}} </h1>
+  {% else %}
+     <h1> Welcome! </h1>
+  {% endif %}
+
+    {% with messages = get_flashed_messages() %}
+             {% if messages %}
+                   {% for message in messages %}
+                      <h1 style="color:blue"> {{ message }}</h1>
+                   {% endfor %}
+             {% endif %}
+          {% endwith %}
+
+    <!--Insertion form-->
+    <h1>insert user :</h1>
+     <form method="POST" action="/insert">
+
+            <input type="email" name="email"  placeholder="הכנס אימייל" dir="rtl" required >
+            <input name="name"  placeholder="הכנס שם" dir="rtl" required>
+            <input type="submit"  value="שלח">
+     </form>
+
+    <!--Delete form-->
+    <h1>Delete - Select user email  :</h1>
+    <form action="/delete_user" method="GET">
+        User email: <label><input name="email" type="email" required >  </label>
+        <input type="submit" value="מחק">
+
+    </form>
+
+    <!--update form-->
+    <h1>Update - Select user email  :</h1>
+    <form action="/update" method="POST">
+       <input name="email"  placeholder="הכנס אימייל" dir="rtl" type="email" required>
+        <input name="name"  placeholder=" עדכון שם רצוי" dir="rtl" required>
+        <input type="submit" value="עדכן">
+
+    </form>
+
+    <!--List of users-->
+    <h1>List of users:</h1>
+    <ul>
+        {% if session.query_results %}<!--If user exsists-->
+            {% for user in session.query_results %}<!-- show  users -->
+                <li>
+                  {{ user.email }} ,{{ user.name }}
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+{% endblock %}

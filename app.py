@@ -1,9 +1,17 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Blueprint, Flask, render_template, url_for, redirect
 from flask import request, session
+import mysql.connector
+from interact_with_DB import interact_db
 
 app = Flask(__name__)
 app.secret_key = '421992'
 
+from assignment10 import assignment10
+app.register_blueprint(assignment10)
+query1 ="DELETE FROM users"
+query2 = "INSERT INTO users(name, email) VALUES ( 'Yizhar', 'Yizhar@gmail.com'),( 'Lili', 'Lili@gmail.com') "
+interact_db(query1, query_type='commit')
+interact_db(query2, query_type='commit')
 
 @app.route('/')
 def cv():
@@ -38,6 +46,7 @@ def assignment9():
           session['username'] = username
     return render_template('assignment9.html', request_method=request.method, username=username, email=email, users=users, userFound=userFound)
 
+
 @app.route('/logout')
 def logout():
     session['username'] = ''
@@ -46,3 +55,4 @@ def logout():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
