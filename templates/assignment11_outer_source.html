@@ -1,0 +1,51 @@
+{% extends 'assignment8.html' %}
+{% block title %}Assignment11{% endblock %}
+{% block head %}
+    {{super()}}
+    <script src="{{ url_for('static' , filename= 'assignment11.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    {% if default %}
+        <h2> Get user frontend</h2>
+        <h4> Put number between 1-12</h4>
+        <form action="/assignment11/outer_source" method="POST"> <!--  post because dealing with passwords -->
+            <input type="number" name="frontend" min="1" max="12" value="1">
+            <input type="submit" value="Get user frontend">
+        </form>
+
+        <h2>Get user backend</h2>
+        <h4> Put number between 1-12</h4>
+        <form action="/assignment11/outer_source" method="POST">
+            <input type="number" name="backend" min="1" max="12" value="1">
+            <input type="submit" value="Get user backend">
+        </form>
+    {% endif %}
+
+    {% if frontend %}
+        <form action="/assignment11/outer_source" >
+            <input type="submit" value="Back">
+        </form>
+        <br>
+        <contentassignment11>
+
+        </contentassignment11>
+        <script>
+            get_users({{ frontend }})
+        </script>
+    {% endif %}
+
+    {% if backend %}
+           <form action="/assignment11/outer_source" >
+            <input type="submit" value="Back">
+        </form>
+                <br>
+                <img src="{{ backend['data'].avatar }}" alt="pic">
+                <h3>User id: {{ backend['data'].id }}</h3>
+                <h3>First name: {{ backend['data'].first_name }}</h3>
+                <h3>Last name: {{ backend['data'].last_name }}</h3>
+                <h3>Email: {{ backend['data'].email }}</h3>
+                <hr><br>
+    {% endif %}
+
+{% endblock %}

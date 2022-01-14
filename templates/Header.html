@@ -1,22 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <header>
-        <a href = "/">Home</a> | <a href = "/assignment8">Free Time </a>
+
+<header>
+        <a href = "/">Home</a> | <a href = "/assignment8">Free Time(assignment8) </a>
         {% if session.logged_in %}
-            | <a href="/assignment9"> Users </a>
-            | <a href="/assignment10"> Users Management </a>
+            | <a href="/assignment9"> Users(assignment9) </a>
+            | <a href="/assignment10"> Users Management(assignment10) </a>
+            | <a href="/assignment11/users">assignments11_users</a>
+            | <a href="/assignment11/outer_source">assignments11_users_outer_source</a>
         {% else %}
             | <a href="/assignment9"> Login </a>
         {% endif %}
         {% if session.username %}
             | <a href='/logout'>Logout</a>
-
         {% endif %}
-    </header>
-</body>
-</html>
+
+
+</header>
+

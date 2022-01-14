@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+{% include 'Header.html' %}
 <head>
+     {% block head %}
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
 </head>
+
 <body>
 
     {% block content %}

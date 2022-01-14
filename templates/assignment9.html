@@ -3,7 +3,6 @@
 {% block title %}Users{% endblock %}
 
 {% block content %}
-    {% include 'Header.html' %}
 
     {% if session.get('logged_in') %}
         <h1>Welcome back, {{session.username}}</h1>

@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block title %} Free Time {% endblock %}
+
 {% block content %}
-{% include 'Header.html' %}
+
 
   {% if session.logged_in %}
      <h1> Welcome, {{session.username}} </h1>
