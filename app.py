@@ -1,5 +1,6 @@
 from flask import Blueprint, Flask, render_template, url_for, redirect
 from flask import request, session
+from flask import jsonify
 import mysql.connector
 import json
 import requests
@@ -10,6 +11,7 @@ app.secret_key = '421992'
 
 from assignment10 import assignment10
 app.register_blueprint(assignment10)
+
 query1 ="DELETE FROM users"
 query2 = "INSERT INTO users(name, email) VALUES ( 'David', 'david@gmail.com'),( 'Haim', 'haim@gmail.com'),( 'Baruch', 'baruch@gmail.com'),( 'Moshe', 'moshe@gmail.com'),( 'Israel', 'israel@gmail.com') "
 interact_db(query1, query_type='commit')
@@ -79,6 +81,38 @@ def outer_source_func():
         return render_template('assignment11_outer_source.html', backend=user)
     else:
         return render_template('assignment11_outer_source.html', default="default")
+
+@app.route('/assignment12/restapi_users', defaults={'USER_ID':-1})
+
+
+@app.route('/assignment12/restapi_users/<int:USER_ID>')
+def restapi_func(USER_ID):
+    if USER_ID == -1:
+        users_dict={}
+        query = "SELECT * FROM users ; "
+        query_result = interact_db(query, 'fetch')
+        for user in query_result:
+            users_dict[f'user_{user.id}'] = {
+                'status': 'success',
+                'name': user.name,
+                'email': user.email
+            }
+    else:
+        query = "SELECT * FROM users where id=%s;" %USER_ID
+        query_result = interact_db(query, 'fetch')
+        if len(query_result)==0:
+            users_dict = {
+                'status': 'failed',
+                'massege': 'user not found'
+            }
+        else:
+            users_dict = {
+                'status': 'success',
+                'name': query_result[0].name,
+                'email': query_result[0].email
+            }
+    return jsonify(users_dict)
+
 
 
 if __name__ == "__main__":
